@@ -1,0 +1,53 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2026-05-11T15:38:53.433Z  INFO 5011 --- [tasks-api] [           main] com.example.tasks.TasksApplication       : Starting TasksApplication v1.0.0-SNAPSHOT using Java 21.0.11-ea with PID 5011 (/home/ubuntu/rest-api-java/target/tasks-api-1.0.0-SNAPSHOT.jar started by ubuntu in /home/ubuntu/rest-api-java)
+2026-05-11T15:38:53.448Z  INFO 5011 --- [tasks-api] [           main] com.example.tasks.TasksApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-05-11T15:38:56.322Z  INFO 5011 --- [tasks-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-05-11T15:38:56.346Z  INFO 5011 --- [tasks-api] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-11T15:38:56.346Z  INFO 5011 --- [tasks-api] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-05-11T15:38:56.394Z  INFO 5011 --- [tasks-api] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-11T15:38:56.395Z  INFO 5011 --- [tasks-api] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2792 ms
+2026-05-11T15:38:57.630Z  INFO 5011 --- [tasks-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-05-11T15:38:57.663Z  INFO 5011 --- [tasks-api] [           main] com.example.tasks.TasksApplication       : Started TasksApplication in 5.215 seconds (process running for 6.279)
+2026-05-11T15:39:02.965Z  INFO 5011 --- [tasks-api] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-11T15:39:02.965Z  INFO 5011 --- [tasks-api] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-11T15:39:02.967Z  INFO 5011 --- [tasks-api] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-05-11T15:47:50.568Z  INFO 5011 --- [tasks-api] [io-8080-exec-10] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 728 ms
+2026-05-11T17:38:21.322Z  INFO 5011 --- [tasks-api] [nio-8080-exec-7] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x010x890x010x000x010x850x030x03j0x020x920x950xcd40xad0xcb0xb30xb30x00Kt.0x09M70xa10xde0x84s0xd50xa50xc8.y0xa30xf70xb0uvZ0x000x010x140xcc0xa80xcc0xa90xcc0xaa0xc0,0xc000x000x9f0xc00xad0xc00x9f0xc0$0xc0(0x00k0xc00x0a0xc00x140x0090xc00xaf0xc00xa30xc00x870xc00x8b0xc0}0xc0s0xc0w0x000xc40x000x880xc0+0xc0/0x000x9e0xc00xac0xc00x9e0xc0#0xc0'0x00g0xc00x090xc00x130x0030xc00xae0xc00xa20xc00x860xc00x8a0xc0|0xc0r0xc0v0x000xbe0x00E0xc00x080xc00x120x000x160xcc0xac0xcc0xad0x000xab0xc00xa70xc080x000xb30xc060x000x910xc00x910xc00x9b0xc00x970xc00xab0x000xaa0xc00xa60xc070x000xb20xc050x000x900xc00x900xc00x960xc00x9a0xc00xaa0xc040x000x8f0x000x9d0xc00x9d0x00=0x0050xc020xc0*0xc00x0f0xc0.0xc0&0xc00x050xc00xa10xc0{0x000xc00x000x840xc00x8d0xc0y0xc00x890xc0u0x000x9c0xc00x9c0x00<0x00/0xc010xc0)0xc00x0e0xc0-0xc0%0xc00x040xc00xa00xc0z0x000xba0x00A0xc00x8c0xc0x0xc00x880xc0t0x000x0a0xc00x0d0xc00x030xcc0xae0x000xad0x000xb70x000x950xc00x930xc00x990x000xac0x000xb60x000x940xc00x920xc00x980x000x930xcc0xab0x000xa90xc00xa50x000xaf0x000x8d0xc00x8f0xc00x950xc00xa90x000xa80xc00xa40x000xae0x000x8c0xc00x8e0xc00x940xc00xa80x000x8b0x000xff0x010x000x00H0x000x0d0x000x160x000x140x060x030x060x010x050x030x050x010x040x030x040x010x030x030x030x010x020x030x020x010x000x0a0x000x180x000x160x000x190x000x1c0x000x180x000x1b0x000x170x000x160x000x1a0x000x150x000x140x000x130x000x120x000x0b0x000x020x010x000x000x160x000x000x000x170x000x000x00#0x000x00...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-05-12T20:33:55.102Z  INFO 5011 --- [tasks-api] [io-8080-exec-10] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in the request target [/index.php?s=/index/\think\app/invokefunction&function=call_user_func_array&vars[0]=md5&vars[1][]=Hello ]. The valid characters are defined in RFC 7230 and RFC 3986
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:481) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
