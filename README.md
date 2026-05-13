@@ -1,133 +1,156 @@
-# Tasks API
+# Final Project – Distributed Systems (REST API)
 
-Example **Spring Boot** REST service for managing tasks. Data is kept **in memory** (it is lost when the application stops). The API is described with **OpenAPI 3** via [springdoc-openapi](https://springdoc.org/) and exposed in **Swagger UI**.
+## Project Title
+Task Management REST API (AWS Deployment)
 
-The project also includes a **HAL hypermedia** surface (Spring HATEOAS): paginated collections and per-resource `_links` so clients can discover related URLs instead of hard-coding paths.
+## Selected Option
+Option 2: REST API Service for a Complex Domain
 
-## Requirements
+---
 
-- **Java 17** or newer  
-- **Maven 3.6+**
+## Project Description
 
-## Run the application
+This project is a RESTful web service built using Java 21 and Spring Boot.  
+It demonstrates the design and implementation of a distributed system with client-server communication using HTTP and REST principles.
 
-```bash
+The system is a simple Task Management API where users can create, read, update, and delete tasks.
+
+Each task contains:
+- unique ID (UUID)
+- title
+- completion status (true/false)
+- creation timestamp
+- update timestamp
+
+The application is deployed on AWS EC2 instances and exposed through an AWS Application Load Balancer (ALB), allowing public access to the API.
+
+---
+
+## Features
+
+The API supports the following operations:
+
+- Create a task
+- Get all tasks
+- Get task by ID
+- Update task
+- Delete task
+- Mark task as completed/uncompleted
+
+Additional features:
+- input validation
+- error handling for invalid requests
+- proper HTTP status codes
+- JSON request/response format
+
+---
+
+## Technologies Used
+
+- Java 21
+- Spring Boot
+- Spring Web
+- Maven
+- JUnit 5
+- AWS EC2 (Ubuntu)
+- AWS Application Load Balancer (ALB)
+- Git & GitHub
+
+---
+
+## Architecture
+
+The project follows a layered architecture:
+
+- Controller Layer – handles HTTP requests
+- Service Layer – contains business logic
+- Model Layer – defines Task entity
+- DTO Layer – handles request validation and data transfer
+- Exception Handling – global exception handler for errors
+
+This separation improves readability, maintainability, and scalability.
+
+---
+
+## API Endpoints
+
+### Create Task
+POST /api/tasks
+
+### Get All Tasks
+GET /api/tasks
+
+### Get Task by ID
+GET /api/tasks/{id}
+
+### Update Task
+PUT /api/tasks/{id}
+
+### Delete Task
+DELETE /api/tasks/{id}
+
+---
+
+## Example Request
+
+POST /api/tasks
+```json
+{
+  "title": "Final project",
+  "completed": false
+}
+
+
+#How to Run
+Clone repository
+git clone https://github.com/qcxvpt/Final_Project-SDT303-.git
+cd Final_Project-SDT303-
+Build project
+mvn clean install
+Run application
 mvn spring-boot:run
-```
 
-Default base URL: `http://localhost:8080`
+or
 
-## API overview
-
-### JSON CRUD (`/api/tasks`)
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/tasks` | List all tasks |
-| `GET` | `/api/tasks/{id}` | Get one task by UUID |
-| `POST` | `/api/tasks` | Create a task (`title` required) |
-| `PUT` | `/api/tasks/{id}` | Replace a task (`title`, `completed` required) |
-| `PATCH` | `/api/tasks/{id}` | Partial update (only sent fields change) |
-| `DELETE` | `/api/tasks/{id}` | Delete a task (returns `204 No Content`) |
-
-### Hypermedia and pagination (`/api/hypermedia/tasks`)
-
-These endpoints return **HAL** JSON (`application/hal+json` by default): task fields appear next to `_links`, and paged lists use `_embedded.tasks`, `page`, and navigation links.
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/hypermedia/tasks` | Paginated list. Query: `page` (default `0`), `size` (default `10`, max `100`). `_links` include `self`, `first`, `last`, and `next` / `prev` when applicable. |
-| `GET` | `/api/hypermedia/tasks/{id}` | One task with `_links.self`, `_links.collection` (first page of the hypermedia list), and `_links.alternate` (plain JSON at `/api/tasks/{id}`). |
-
-Tasks are ordered by `createdAt`, then `title`, so paging is stable for the in-memory store.
-
-### Task JSON shape
-
-| Field | Type | Notes |
-|-------|------|--------|
-| `id` | UUID | Set by the server on create |
-| `title` | string | Required on create / full update |
-| `description` | string | Optional |
-| `completed` | boolean | Default `false` on create |
-| `createdAt` | instant (ISO-8601) | Read-only |
-| `updatedAt` | instant (ISO-8601) | Read-only |
-
-### Example: create and fetch
-
-```bash
-curl -s -X POST http://localhost:8080/api/tasks \
-  -H "Content-Type: application/json" \
-  -d '{"title":"Buy milk","description":"2%","completed":false}'
-```
-
-Use the returned `id` in:
-
-```bash
-curl -s http://localhost:8080/api/tasks/<id>
-```
-
-### Example: paged HAL collection
-
-```bash
-curl -s "http://localhost:8080/api/hypermedia/tasks?page=0&size=5"
-```
-
-### Example: HAL item (discover related URLs from `_links`)
-
-```bash
-curl -s "http://localhost:8080/api/hypermedia/tasks/<id>"
-```
-
-## Postman
-
-Import the collection (variables: `baseUrl`, `taskId`, `page`, `pageSize`):
-
-**[`postman/Tasks-API.postman_collection.json`](postman/Tasks-API.postman_collection.json)**
-
-1. Start the app: `mvn spring-boot:run`  
-2. Run **Create task** — it stores the returned `id` in `taskId`.  
-3. Use **Tasks (hypermedia)** for paginated HAL and item links, or adjust `page` / `pageSize` on the list request.
-
-## OpenAPI and Swagger UI
-
-| Resource | URL |
-|----------|-----|
-| OpenAPI JSON | [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs) |
-| Swagger UI | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) |
-
-## Tests
-
-The project includes **unit**, **integration** (MockMvc), and **API** (embedded server + `TestRestTemplate`) tests.
-
-```bash
-mvn test
-```
-
-- **Unit:** `TaskService` logic without Spring (`com.example.tasks.unit`).  
-- **Integration:** full servlet stack with MockMvc (`com.example.tasks.integration`), including hypermedia tests.  
-- **API:** HTTP calls on a random port (`com.example.tasks.api`).
-
-## Project layout
-
-```
-src/main/java/com/example/tasks/
-  TasksApplication.java       # Entry point
-  config/OpenApiConfig.java   # API title / description in the spec
-  dto/                        # Request bodies for POST, PUT, PATCH
-  hypermedia/                 # HAL controllers and assemblers (pagination + _links)
-  model/Task.java             # Task resource
-  service/TaskService.java    # In-memory store + paged reads
-  web/                        # REST controller and exception handling
-src/main/resources/
-  application.properties      # App name and springdoc paths
-postman/
-  Tasks-API.postman_collection.json
-src/test/java/                # Unit, integration, and API tests
-```
-
-## Build artifact
-
-```bash
-mvn -q package
 java -jar target/tasks-api-1.0.0-SNAPSHOT.jar
-```
+Tests
+
+Run tests using:
+
+mvn test
+
+Tests cover:
+
+service logic
+valid task creation
+invalid input handling
+task retrieval
+error scenarios
+Deployment
+
+The application is deployed on AWS:
+
+EC2 instances (Ubuntu)
+Application Load Balancer (ALB)
+Target Group with 3 healthy instances
+
+Base URL:
+http://api-alb-2050251788.eu-central-1.elb.amazonaws.com
+
+Example Usage
+Create Task
+curl -X POST http://api-alb-2050251788.eu-central-1.elb.amazonaws.com/api/tasks \
+-H "Content-Type: application/json" \
+-d '{"title":"Test task","completed":false}'
+Get Tasks
+curl http://api-alb-2050251788.eu-central-1.elb.amazonaws.com/api/tasks
+Design Decisions
+Layered architecture used for clean separation of logic
+DTOs used for validation and request safety
+Global exception handler ensures consistent error responses
+In-memory storage used for simplicity
+RESTful principles followed strictly
+Limitations
+No database (data is not persistent after restart)
+No authentication system
+Single domain (Task only)
